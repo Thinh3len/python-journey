@@ -135,7 +135,7 @@ print(10 / 3)              # 3.3333333333333335
 print(0.1 + 0.2)           # 0.30000000000000004 (!!!)
 print(0.1 + 0.2 == 0.3)    # False (!!!)
 
-# Giải pháp: dùng round() khi so sánh
+# round() phù hợp để hiển thị; khi cần so sánh gần đúng, dùng math.isclose().
 print(round(0.1 + 0.2, 2) == 0.3)  # True
 ```
 
@@ -318,3 +318,9 @@ print(len("Việt Nam"))
 > 1. **Biến** là tên gắn với giá trị — giá trị có thể thay đổi, tên thì không (trừ khi bạn gán lại)
 > 2. **`input()` luôn trả về `str`** — phải dùng `int()` hoặc `float()` nếu muốn tính toán
 > 3. **f-string** (`f"Xin chào {ten}"`) là cách in đẹp và hiện đại nhất — dùng nó thay vì `+`
+
+## Conversion có thể thất bại
+
+`int("42")` chạy được nhưng `int("bốn mươi hai")` tạo `ValueError`. Ở Week 02,
+hãy kiểm tra dạng input đơn giản trước khi conversion và đọc error khi data sai.
+Week 11 sẽ dạy exception và defensive coding có hệ thống.

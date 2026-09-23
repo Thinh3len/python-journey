@@ -1,24 +1,10 @@
-"""
-Bài tập 01: Đọc và ghi file text 📄
-======================================
-Mục tiêu: Dùng open(), read, write với context manager
-"""
+"""Exercise 01: pathlib and UTF-8 text."""
 
-# TODO 1: Ghi danh sách 5 câu nói yêu thích vào file "quotes.txt"
-# Dùng with open("quotes.txt", "w") as f:
+from pathlib import Path
 
-
-# TODO 2: Đọc file "quotes.txt" và in ra từng dòng có số thứ tự
-# Dùng enumerate()
-
-
-# TODO 3: Thêm (append) 2 câu nói mới vào cuối file "quotes.txt"
-# Dùng mode "a"
-
-
-# TODO 4: Đọc file, đếm số dòng, số từ, số ký tự
-# In thống kê
-
-
-# TODO 5 (Thử thách): Copy nội dung file, chuyển thành UPPER CASE
-# Đọc "quotes.txt" → ghi vào "quotes_upper.txt" (chữ in hoa)
+WEEK_ROOT = Path(__file__).resolve().parents[1]
+path = WEEK_ROOT / ".learner-output" / "week10.txt"
+# TODO: tạo thư mục cha.
+# TODO: ghi hai dòng với encoding="utf-8".
+# TODO: đọc text và in từng dòng với số thứ tự bắt đầu từ 1.
+print(path)

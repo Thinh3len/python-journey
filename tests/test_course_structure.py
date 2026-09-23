@@ -7,6 +7,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_WEEK_PREFIXES = [f"week-{number:02d}-" for number in range(1, 16)]
+EXPECTED_WEEK_DIRECTORIES = [
+    "week-01-hello-python",
+    "week-02-variables-types",
+    "week-03-conditionals",
+    "week-04-strings",
+    "week-05-lists-tuples",
+    "week-06-loops",
+    "week-07-functions",
+    "week-08-dicts-sets",
+    "week-09-midterm-project",
+    "week-10-files-io",
+    "week-11-exceptions",
+    "week-12-testing-pytest",
+    "week-13-modules-cli-api",
+    "week-14-oop-essentials",
+    "week-15-capstone-project",
+]
 REQUIRED_ROOT_FILES = {
     "AGENTS.md",
     "CONTRIBUTING.md",
@@ -48,6 +65,7 @@ def test_week_directories_cover_exactly_01_through_15() -> None:
         name.startswith(prefix)
         for name, prefix in zip(week_names, EXPECTED_WEEK_PREFIXES, strict=True)
     )
+    assert week_names == EXPECTED_WEEK_DIRECTORIES
 
 
 def test_syllabus_has_exactly_15_numbered_week_headings() -> None:
@@ -88,3 +106,70 @@ def test_course_health_verifier_passes() -> None:
     )
 
     assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_week_13_http_exercise_runs_in_documented_module_mode() -> None:
+    week_root = ROOT / "weeks" / "week-13-modules-cli-api"
+    result = subprocess.run(
+        [sys.executable, "-m", "exercises.ex03_http"],
+        cwd=week_root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "'lesson': 13" in result.stdout
+
+
+def test_every_week_has_learning_architecture() -> None:
+    """Every week ships notes, a README, hints and a machine check."""
+    missing: list[str] = []
+    for name in EXPECTED_WEEK_DIRECTORIES:
+        week = ROOT / "weeks" / name
+        for required in ("README.md", "notes.md", "hints.md"):
+            if not (week / required).is_file():
+                missing.append(f"{name}/{required}")
+        checks = week / "checks"
+        if not checks.is_dir():
+            missing.append(f"{name}/checks/")
+            continue
+        if not (checks / "README.md").is_file():
+            missing.append(f"{name}/checks/README.md")
+        if not any(checks.glob("check*.py")):
+            missing.append(f"{name}/checks/check*.py")
+
+    assert not missing, f"missing week architecture: {missing}"
+
+
+def test_week_01_solution_checks_pass() -> None:
+    result = subprocess.run(
+        [sys.executable, "weeks/week-01-hello-python/checks/check_solutions.py"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_week_15_readiness_check_reports_incomplete_project(tmp_path: Path) -> None:
+    """The readiness check must fail a project that is missing its evidence."""
+    (tmp_path / "main.py").write_text("print('hi')\n", encoding="utf-8")
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "weeks/week-15-capstone-project/checks/check_capstone_readiness.py",
+            str(tmp_path),
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 1, result.stdout + result.stderr
+    assert "README.md" in result.stdout
+    assert "AI_USAGE.md" in result.stdout

@@ -1,30 +1,43 @@
-# Tuần 15: Dự án cuối khóa 🎓
+# Tuần 15 — Capstone · Tests · README · Git/GitHub
 
-> *"The secret is to get started." — Mark Twain*
+Tuần cuối tích hợp kỹ năng đã học thành evidence có thể chạy, đọc và review.
 
-## 🎯 Mục tiêu tuần này
+## Canonical capstone
 
-Sau tuần này, bạn sẽ:
+Đề bài, deliverables và rubric duy nhất nằm tại
+[FINAL_PROJECT.md](../../FINAL_PROJECT.md). Week 15 không định nghĩa rubric
+thứ hai và VuaCóc Bot không phải lựa chọn bắt buộc.
 
-- Hoàn thành dự án cuối khóa sử dụng toàn bộ kiến thức
-- Thực hành quy trình phát triển phần mềm thực tế
-- Viết README và documentation chuyên nghiệp
-- Nhìn lại hành trình và xác định bước tiếp theo
+## Outcomes
 
-## 📖 Kiến thức cần nắm
+- hoàn thiện một vertical slice có scope rõ;
+- chạy tests và ghi known failures;
+- viết README có setup, usage, evidence và limitations;
+- tạo commit history dễ review;
+- demo một kết quả có thể tái hiện.
 
-Tổng hợp toàn bộ 14 tuần: OOP + File I/O + Exception + Modules + ...
+Flagship optional track:
+[VuaCóc Bot Journey](../../projects/vuacoc-bot-journey/README.md), gồm local
+tournament và replay course-local.
 
-Chi tiết xem tại [`notes.md`](notes.md)
+Xem [integration checklist](notes.md) và [gợi ý theo hạng mục](hints.md).
 
-## 🚀 Đề bài
+Starter documentation:
 
-Xem chi tiết yêu cầu và tiêu chí đánh giá trong [`notes.md`](notes.md)
+- [Capstone README template](../../templates/capstone-readme-template.md)
+- [AI usage template](../../templates/AI_USAGE.template.md)
 
-## ✅ Checklist cuối tuần
+## Readiness check
 
-- [ ] Chọn đề tài và lên kế hoạch
-- [ ] Hoàn thành code chức năng chính
-- [ ] Test và sửa bug
-- [ ] Viết README cho project
-- [ ] Commit code lên GitHub
+Week 15 không có exercises hay official solutions: deliverable chính là project
+của bạn. Thay vào đó, tự kiểm tra evidence cơ học trước khi handoff:
+
+```bash
+python weeks/week-15-capstone-project/checks/check_capstone_readiness.py path/to/my-project
+```
+
+Check xác nhận README có setup/usage/test, có `AI_USAGE.md`, đủ hàm, đủ test,
+pytest collect được và không có bare `except:`. Nó **không chấm điểm** — rubric
+duy nhất vẫn là [FINAL_PROJECT.md](../../FINAL_PROJECT.md).
+
+Chi tiết: [`checks/README.md`](checks/README.md).

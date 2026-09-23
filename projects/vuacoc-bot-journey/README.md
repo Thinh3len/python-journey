@@ -1,7 +1,9 @@
 # VuaCóc Bot Journey
 
 VuaCóc Bot Journey là project xuyên khóa để người học nâng cấp cùng một hệ
-thống ra quyết định từ Week 07 đến Week 15. Người học không gặp `functions`,
+thống ra quyết định từ Week 07 đến Week 15. Game gốc có thể tham khảo tại
+[vuacoc.com](https://vuacoc.com/), nhưng track này chỉ dùng mô hình học tập
+local, không tuyên bố API/runtime compatibility. Người học không gặp `functions`,
 `dict`, JSON, exceptions, `pytest`, modules và OOP như những chương rời rạc:
 mỗi chủ đề làm bot **more capable, more reliable, more explainable**.
 
@@ -59,6 +61,9 @@ SECRETS = 0
 | W13 | [Adapter Boundary](milestones/w13-modules-cli-arena-adapter.md) | tách bot core khỏi runtime adapter |
 | W14 | [Strategy Composition](milestones/w14-strategy-composition.md) | thay strategy mà không viết lại core |
 | W15 | [Capstone Tournament](milestones/w15-capstone-tournament.md) | tích hợp, đánh giá, giải thích và demo |
+
+Tournament W15 chạy hai lượt A/B trước mỗi baseline để evidence không phụ thuộc
+một phía xuất phát. Các metric được báo riêng, không gộp thành rating.
 
 Xem [bảng milestone](MILESTONES.md), [kiến trúc](ARCHITECTURE.md),
 [evaluation](EVALUATION.md) và [trạng thái integration contract](INTEGRATION_CONTRACT.md).
