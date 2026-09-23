@@ -2,9 +2,33 @@
 
 subjects = ["Toán", "Văn", "Anh"]
 
-# TODO: append one subject and insert another at index 1.
-# TODO: update the first subject.
-# TODO: remove one known subject and pop the last subject.
-# TODO: print the first, last and middle slice after each safe operation.
+subjects.append("Tin")
+print(
+    f"after append: first={subjects[0]}, "
+    f"last={subjects[-1]}, middle={subjects[1:-1]}"
+)
 
-print(subjects)
+subjects.insert(1, "Sử")
+print(
+    f"after insert: first={subjects[0]}, "
+    f"last={subjects[-1]}, middle={subjects[1:-1]}"
+)
+
+subjects[0] = "Toán học"
+print(
+    f"after update: first={subjects[0]}, "
+    f"last={subjects[-1]}, middle={subjects[1:-1]}"
+)
+
+subjects.remove("Anh")
+print(
+    f"after remove: first={subjects[0]}, "
+    f"last={subjects[-1]}, middle={subjects[1:-1]}"
+)
+
+last_subject = subjects.pop()
+print(
+    f"after pop: first={subjects[0]}, "
+    f"last={subjects[-1]}, middle={subjects[1:-1]}"
+)
+print(f"popped={last_subject}, remaining={subjects}")

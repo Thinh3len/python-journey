@@ -6,8 +6,12 @@ tasks.append(("Practice unpacking", "todo"))
 first_title, first_status = tasks[0]
 print(f"first={first_title}, status={first_status}")
 
+alias_tasks = tasks
 copied_tasks = tasks.copy()
 tasks[1] = ("Observe mutability", "done")
+removed_task = tasks.pop()
 
 print(f"current={tasks}")
+print(f"alias={alias_tasks}")
 print(f"copy={copied_tasks}")
+print(f"removed={removed_task}")
