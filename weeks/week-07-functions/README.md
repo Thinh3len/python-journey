@@ -26,22 +26,28 @@ Sau Week 07, bạn có thể:
 Bạn nên hoàn thành Week 01–06 và đã quen với biến, kiểu dữ liệu, điều kiện,
 chuỗi, list và loop.
 
-## Thứ tự học
+## Quy trình làm
 
-1. Đọc [`notes.md`](notes.md).
-2. Chạy lần lượt các file trong [`examples/`](examples/).
-3. Làm bốn bài trong [`exercises/`](exercises/).
-4. Mở [`hints.md`](hints.md) theo từng tầng nếu bị kẹt.
-5. Chạy [machine check](checks/README.md) cho official solutions.
-6. Hoàn thành [Personal Utility Toolkit](mini-project/README.md).
-7. Commit kết quả và lưu bằng chứng.
+1. **Learn:** Đọc [`notes.md`](notes.md), chú ý sự khác nhau giữa `print()` và `return`, local scope, và type hints không kiểm tra kiểu lúc runtime.
+2. **Build:** Chạy lần lượt các ví dụ trong [`examples/`](examples/), sau đó tự làm bốn bài trong [`exercises/`](exercises/). Đọc từng tầng trong [`hints.md`](hints.md) nếu bị kẹt; chỉ xem solutions sau khi đã thử.
+3. **Test:** Với mỗi hàm, thử một trường hợp thông thường và ít nhất một trường hợp biên. Kiểm tra giá trị trả về, không chỉ nhìn nội dung được in.
+4. **Debug:** Đọc traceback, xác định hàm và input gây sai, sửa một nguyên nhân rồi chạy lại trường hợp đó.
+5. **Improve:** Làm rõ tên hàm và contract; tách trách nhiệm nếu một hàm đang làm nhiều việc. Không dùng global state khi có thể truyền parameter và `return` kết quả.
+6. **Build + Test:** Hoàn thành [Personal Utility Toolkit](mini-project/README.md). Chạy starter từ thư mục gốc repo:
+       ```bash
+       python weeks/week-07-functions/mini-project/starter.py
+       ```
+7. **Prove:** Lưu output chạy thành công, ghi một bug đã debug, commit kết quả và cập nhật [`PROGRESS.md`](../../PROGRESS.md).
 
-## Learning path
+## Kiểm tra reference solutions
 
-```text
-README → notes → examples → exercises → hints
-       → machine checks → mini-project → evidence
+Lệnh dưới đây dành cho maintainer hoặc người muốn xác minh các lời giải tham khảo. Nó kiểm tra official solutions, **không** chấm bài trong `exercises/` hay `mini-project/starter.py` của người học:
+
+```bash
+python weeks/week-07-functions/checks/check_solutions.py
 ```
+
+Kết quả mong đợi: `Week 07 solution checks: PASS`.
 
 ## Checklist
 
@@ -51,7 +57,7 @@ README → notes → examples → exercises → hints
 - [ ] Tôi viết được type hints cơ bản.
 - [ ] Tôi biết type hints không validate runtime.
 - [ ] Tôi hoàn thành decision function.
-- [ ] Tôi chạy machine check.
+- [ ] Tôi tự kiểm tra normal case và boundary case.
 - [ ] Tôi hoàn thành mini-project.
 - [ ] Tôi commit kết quả.
 
@@ -59,7 +65,7 @@ README → notes → examples → exercises → hints
 
 Lưu lại:
 
-- output `Week 07 solution checks: PASS`;
+- kết quả kiểm tra các normal case và boundary case;
 - output khi chạy mini-project;
 - commit chứa bài làm với message có ý nghĩa;
 - một ghi chú ngắn về lỗi bạn đã gặp và cách bạn sửa lỗi.

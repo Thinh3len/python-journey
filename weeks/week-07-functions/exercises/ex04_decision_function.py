@@ -24,9 +24,15 @@ Self-check command:
 
 def choose_action(state: str) -> str:
     """Return a deterministic teaching action for ``state``."""
-    # TODO: danger -> defend, opportunity -> advance, còn lại -> wait.
-    raise NotImplementedError("Hoàn thành hàm choose_action")
+    if state == "danger":
+        return "defend"
+    elif state == "opportunity":
+        return "advance"
+    return "wait"
 
 
 if __name__ == "__main__":
-    print("Hoàn thành TODO rồi thử danger, opportunity, neutral và chuỗi rỗng.")
+    print(f"'danger' -> {choose_action('danger')}")
+    print(f"'opportunity' -> {choose_action('opportunity')}")
+    print(f"'neutral' -> {choose_action('neutral')}")
+    print(f"'' -> {choose_action('')}")

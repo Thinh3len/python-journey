@@ -48,6 +48,27 @@ for name, score in zip(names, scores):
     print(f"{name}: {score} điểm")
 ```
 
+### List comprehension đơn giản
+
+Khi muốn tạo một list mới từ từng phần tử của list cũ, comprehension có thể
+viết gọn một vòng `for`:
+
+```python
+numbers = [1, 2, 3, 4, 5]
+squares = [number * number for number in numbers]
+print(squares)  # [1, 4, 9, 16, 25]
+```
+
+Có thể thêm điều kiện để chỉ lấy một số phần tử:
+
+```python
+even_squares = [number * number for number in numbers if number % 2 == 0]
+print(even_squares)  # [4, 16]
+```
+
+Hãy dùng comprehension cho phép biến đổi hoặc lọc đơn giản. Nếu cần nhiều
+nhánh, nhiều bước hay khó đọc, hãy dùng vòng `for` thông thường.
+
 ## 2. Vòng Lặp while
 
 ```python
