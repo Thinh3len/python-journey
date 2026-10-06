@@ -28,7 +28,7 @@ import math
 
 def chao(ten: str) -> str:
     """Trả về lời chào cho ``ten``."""
-    return f"Xin chào {ten}!"
+    return f"Xin chào {ten}!"`
 
 
 def tinh_dien_tich_hinh_tron(ban_kinh: float) -> float:

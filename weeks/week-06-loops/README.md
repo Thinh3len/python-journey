@@ -1,32 +1,55 @@
-# Tuần 06 — Loops · `enumerate` · `zip` · comprehensions
-Tuần này luyện cách lặp qua dữ liệu, chọn đúng kiểu vòng lặp và kiểm tra kết quả ở từng bước. Dành khoảng 7–10 giờ, chia thành các phiên ngắn.
+# 🔁 Tuần 06: Vòng Lặp & Cấu Trúc Điều Khiển (Loops & Control Flow)
 
-## Kết quả cần đạt
+Thực hành vòng lặp `for`, `while`, vòng lặp lồng nhau (Nested Loops) và tư duy xây dựng chương trình theo menu interactive.
 
-- Dùng `for` với iterable và `range()`; dùng `while` khi cần lặp theo điều kiện.
-- Dùng `break`, `continue` có chủ đích và tránh vòng lặp không có điểm dừng.
-- Dùng `enumerate()` để lấy số thứ tự và `zip()` để ghép dữ liệu song song.
-- Viết comprehension đơn giản, dễ đọc; dùng nested loop khi bài toán cần.
+---
 
-## Quy trình làm
+## 🎯 Mục Tiêu Học Tập
+- Thành thạo duyệt `list`, `range`, `string`, sử dụng `enumerate()`, `zip()` và List Comprehension.
+- Kiểm soát luồng thực thi với `while`, `while True` + `break` và xử lý nhập liệu an toàn.
+- Bồi dưỡng tư duy hình học và ma trận thông qua bài toán vẽ hoa văn bằng vòng lặp lồng nhau.
 
-1. **Learn:** Đọc [`notes.md`](notes.md). Tự chạy từng ví dụ nhỏ và giải thích khi nào vòng lặp kết thúc.
-2. **Build:** Làm lần lượt ba file trong `exercises/`: `ex01_for_loop.py`, `ex02_while_loop.py`, rồi `ex03_patterns.py`. Hoàn thành TODO theo thứ tự; bài cuối có các thử thách bổ sung.
-3. **Test:** Chạy từng file từ thư mục gốc repo. Với input, thử cả giá trị hợp lệ, biên và không hợp lệ; đối chiếu kết quả với yêu cầu trong TODO.
-	```bash
-	python weeks/week-06-loops/exercises/ex01_for_loop.py
-	python weeks/week-06-loops/exercises/ex02_while_loop.py
-	python weeks/week-06-loops/exercises/ex03_patterns.py
-	```
-4. **Debug:** Khi kết quả sai, kiểm tra giá trị biến ở mỗi lượt lặp, điều kiện dừng và cách cập nhật biến. Sửa một nguyên nhân rồi chạy lại đúng bài đó.
-5. **Improve:** Thử thay cách duyệt index thủ công bằng `enumerate()` hoặc `zip()` khi phù hợp. Hoàn thành TODO comprehension và giữ biểu thức ngắn, dễ đọc.
-6. **Build + Test:** Hoàn thành [Pattern Printer](mini-project/README.md), chạy các lựa chọn trong menu với kích thước nhỏ và kiểm tra hình in.
-7. **Prove:** Ghi lại một lỗi đã debug, output mini-project và commit bài làm; cập nhật [`PROGRESS.md`](../../PROGRESS.md).
+---
 
-## Sau khi thử
+## 📝 Danh Sách Bài Tập
 
-Các lời giải tham khảo nằm trong `solutions/`. Chỉ mở để so sánh sau khi đã tự làm; hãy giải thích được điểm khác nhau và tự chạy lại bài của mình.
+### 1. Bài tập 01 — Vòng lặp `for` (`ex01_for_loops.py`)
+- **Cửu chương**: In bảng cửu chương của số $n$ nhập từ bàn phím.
+- **`enumerate()`**: Duyệt danh sách trái cây kèm số thứ tự.
+- **`zip()`**: Ghép cặp danh sách tên và điểm số tương ứng.
+- **`range()`**: Tính tổng các số chẵn từ 1 đến 100.
+- **Fibonacci**: In ra $n$ số Fibonacci đầu tiên.
+- **List Comprehension**: Tạo danh sách bình phương các số chẵn từ 1 đến 10.
 
-## Đọc thêm
+### 2. Bài tập 02 — Vòng lặp `while` (`ex02_while_loops.py`)
+- **Đếm ngược**: Đếm từ 10 về 1 và in thông báo phóng.
+- **Đoán số**: Trò chơi đoán số ngẫu nhiên (1-100) có gợi ý "Cao hơn/Thấp hơn".
+- **Nhập liệu an toàn**: Kiểm tra tuổi nhập vào nằm trong khoảng 1–120.
+- **Menu ứng dụng**: Menu chọn phép tính (Cộng, Trừ, Nhân, Thoát).
 
-[Think Python — Chapter 6: Iteration](https://allendowney.github.io/ThinkPython/chap06.html)
+### 3. Bài tập 03 — In hoa văn (`ex03_nested_loops.py`)
+- Tam giác vuông kích thước $n$.
+- Tam giác cân căn giữa kích thước $n$.
+- Hình kim cương đối xứng kích thước $n$ (số lẻ).
+- Bàn cờ vua $n \times n$ sử dụng ký tự `■` và `□`.
+
+---
+
+## 🎨 Mini-Project: Pattern Printer (`pattern_printer.py`)
+
+Ứng dụng CLI cho phép người dùng chọn in các hoa văn hình học với kích thước và ký tự tùy chỉnh:
+1. **Tam giác vuông**
+2. **Hình kim cương**
+3. **Cây thông Noel** (kèm gốc cây `|||`)
+4. **Ma trận xoắn ốc (Spiral Matrix)**
+
+---
+
+## 🚀 Hướng Dẫn Chạy Bài TẬP
+
+```bash
+# Chạy bài tập vòng lặp for
+python weeks/week-06-loops/exercises/ex01_for_loops.py
+
+# Chạy mini-project
+python weeks/week-06-loops/mini-project/pattern_printer.py

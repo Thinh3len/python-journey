@@ -1,75 +1,57 @@
-# Tuần 07 — Functions · Decomposition · Scope · Type hints
+# 🧩 Tuần 07: Hàm & Phân Tách Logic (Functions & Decomposition)
 
-Tuần này dùng hàm để chia một vấn đề thành những phần nhỏ, nhận input và trả
-output rõ ràng. Đây là tuần thí điểm cho learning loop:
+Luyện tập thiết kế hàm (Functions), quản lý tham số, phạm vi biến (Scope) và tư duy phân tách bài toán lớn thành các mô-đun nhỏ (Decomposition).
 
-```text
-Learn → Build → Test → Debug → Improve → Commit → Prove
-```
+---
 
-## Mục tiêu
+## 🎯 Mục Tiêu Học Tập
+- Chuyển đổi từ viết script tuyến tính sang cấu trúc hàm tái sử dụng với `return`.
+- Hiểu rõ tham số mặc định (Default Parameters) và khai báo Type Hints.
+- Kiểm soát phạm vi biến (Local Scope), tránh phụ thuộc vào biến toàn cục (Global State).
+- Áp dụng nguyên lý **Decomposition**: Mỗi hàm chỉ giải quyết một việc duy nhất.
 
-Sau Week 07, bạn có thể:
+---
 
-- viết và gọi hàm với `def`;
-- phân biệt parameter và argument;
-- dùng `return` để đưa dữ liệu về nơi gọi hàm;
-- dùng default parameter ở mức cơ bản;
-- giải thích local scope và tránh lạm dụng global state;
-- phân rã một bài toán thành các hàm nhỏ;
-- viết docstring ngắn và type hints cơ bản;
-- giải thích vì sao type hints không tự kiểm tra kiểu khi chương trình chạy;
-- viết một decision function đơn giản, xác định được từ input đến output.
+## 📝 Danh Sách Bài Tập
 
-## Prerequisites
+### 1. Exercise 01 — Basic Functions (`ex01_basic_func.py`)
+- `chao(ten)`: Trả về chuỗi lời chào.
+- `tinh_dien_tich_hinh_tron(ban_kinh)`: Tính diện tích hình tròn dùng `math.pi`.
+- `la_so_chan(so)`: Kiểm tra số chẵn bằng phép chia lấy dư.
 
-Bạn nên hoàn thành Week 01–06 và đã quen với biến, kiểu dữ liệu, điều kiện,
-chuỗi, list và loop.
+### 2. Exercise 02 — Parameters & Defaults (`ex02_params.py`)
+- `gioi_thieu(ten, tuoi)`: Tạo câu giới thiệu có tuổi mặc định (18).
+- `tinh_tam_tinh(gia, so_luong)`: Tính số tiền tạm tính (kiểm tra số lượng không âm).
+- `ap_dung_giam_gia(tam_tinh, phan_tram)`: Tính tiền sau khi giảm giá.
+- `tao_hoa_don(gia, so_luong, phan_tram)`: Tổng hợp các bước tính toán và trả về chuỗi hóa đơn.
 
-## Quy trình làm
+### 3. Exercise 03 — Scope & Local State (`ex03_scope.py`)
+- Quản lý danh sách ghi chú thông qua biến tham chiếu local:
+  - `them_ghi_chu(danh_sach, noi_dung)`: Thêm ghi chú (loại bỏ khoảng trắng rỗng).
+  - `tim_ghi_chu(danh_sach, tu_khoa)`: Tìm kiếm không phân biệt hoa/thường.
+  - `dem_ghi_chu(danh_sach)`: Đếm số lượng ghi chú.
 
-1. **Learn:** Đọc [`notes.md`](notes.md), chú ý sự khác nhau giữa `print()` và `return`, local scope, và type hints không kiểm tra kiểu lúc runtime.
-2. **Build:** Chạy lần lượt các ví dụ trong [`examples/`](examples/), sau đó tự làm bốn bài trong [`exercises/`](exercises/). Đọc từng tầng trong [`hints.md`](hints.md) nếu bị kẹt; chỉ xem solutions sau khi đã thử.
-3. **Test:** Với mỗi hàm, thử một trường hợp thông thường và ít nhất một trường hợp biên. Kiểm tra giá trị trả về, không chỉ nhìn nội dung được in.
-4. **Debug:** Đọc traceback, xác định hàm và input gây sai, sửa một nguyên nhân rồi chạy lại trường hợp đó.
-5. **Improve:** Làm rõ tên hàm và contract; tách trách nhiệm nếu một hàm đang làm nhiều việc. Không dùng global state khi có thể truyền parameter và `return` kết quả.
-6. **Build + Test:** Hoàn thành [Personal Utility Toolkit](mini-project/README.md). Chạy starter từ thư mục gốc repo:
-       ```bash
-       python weeks/week-07-functions/mini-project/starter.py
-       ```
-7. **Prove:** Lưu output chạy thành công, ghi một bug đã debug, commit kết quả và cập nhật [`PROGRESS.md`](../../PROGRESS.md).
+### 4. Exercise 04 — Decision Function (`ex04_decision_function.py`)
+- `choose_action(state)`: Hàm ra quyết định dạng deterministic (`danger` $\rightarrow$ `defend`, `opportunity` $\rightarrow$ `advance`, khác $\rightarrow$ `wait`).
 
-## Kiểm tra reference solutions
+---
 
-Lệnh dưới đây dành cho maintainer hoặc người muốn xác minh các lời giải tham khảo. Nó kiểm tra official solutions, **không** chấm bài trong `exercises/` hay `mini-project/starter.py` của người học:
+## 🛠️ Mini-Project: Personal Utility Toolkit (`starter.py`)
+
+Bộ công cụ xử lý hóa đơn và phân loại kết quả học tập được ghép nối từ 5 hàm đơn nhiệm:
+1. `calculate_subtotal(price, quantity)`: Tính tạm tính.
+2. `calculate_discount(subtotal, percent)`: Tính tiền giảm giá.
+3. `calculate_average(scores)`: Tính điểm trung bình.
+4. `classify_score(average)`: Phân loại học lực (Xuất sắc, Khá, Trung bình, Yếu).
+5. `format_currency(amount)`: Định dạng hiển thị tiền tệ VNĐ.
+
+---
+
+## 🚀 Hướng Dẫn Chạy Bài Tập
 
 ```bash
-python weeks/week-07-functions/checks/check_solutions.py
-```
+# Chạy bài tập hàm cơ bản
+python weeks/week-07-functions/exercises/ex01_basic_func.py
 
-Kết quả mong đợi: `Week 07 solution checks: PASS`.
-
-## Checklist
-
-- [ ] Tôi dùng `return` đúng.
-- [ ] Tôi chia được bài toán thành nhiều hàm.
-- [ ] Tôi giải thích được local scope.
-- [ ] Tôi viết được type hints cơ bản.
-- [ ] Tôi biết type hints không validate runtime.
-- [ ] Tôi hoàn thành decision function.
-- [ ] Tôi tự kiểm tra normal case và boundary case.
-- [ ] Tôi hoàn thành mini-project.
-- [ ] Tôi commit kết quả.
-
-## Evidence
-
-Lưu lại:
-
-- kết quả kiểm tra các normal case và boundary case;
-- output khi chạy mini-project;
-- commit chứa bài làm với message có ý nghĩa;
-- một ghi chú ngắn về lỗi bạn đã gặp và cách bạn sửa lỗi.
-
-## VuaCóc Bot Journey
-
-Week 07 milestone: [Function Bot](../../projects/vuacoc-bot-journey/milestones/w07-function-bot.md).
+# Chạy mini-project
+python weeks/week-07-functions/mini-project/starter.py

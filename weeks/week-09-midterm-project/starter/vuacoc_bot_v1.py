@@ -4,17 +4,28 @@ LOCAL_ACTIONS = {"left", "right", "wait"}
 
 
 def choose_action(state: dict[str, int]) -> str:
-    """Return a safe action while the learner implements 2–4 rules."""
-    # TODO: read position, goal and optional opponent_position.
-    # TODO: handle the goal boundary before movement rules.
-    # TODO: return only left, right or wait.
-    return "wait"
+    """Return a legal course-local action from a small structured state."""
+    position = state.get("position", 0)
+    goal = state.get("goal", position)
+    opponent = state.get("opponent_position")
+
+    if position == goal:
+        return "wait"
+    if opponent is not None and abs(position - opponent) <= 1:
+        return "wait"
+    if position < goal:
+        return "right"
+    return "left"
 
 
 def explain_action(state: dict[str, int], action: str) -> str:
     """Explain which observed state values led to an action."""
-    # TODO: improve this explanation with the fields your rules use.
-    return f"state={state}, action={action}"
+    position = state.get("position")
+    opponent = state.get("opponent_position")
+    goal = state.get("goal")
+    return (
+        f"position={position}, opponent={opponent}, goal={goal} -> {action}"
+    )
 
 
 def main() -> None:

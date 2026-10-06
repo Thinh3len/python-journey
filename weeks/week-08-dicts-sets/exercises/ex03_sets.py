@@ -4,27 +4,34 @@
 def phan_tich_mon_hoc(
     semester_one: set[str], semester_two: set[str]
 ) -> dict[str, set[str]]:
-    """Trả các nhóm common, only_one, only_two và all."""
-    # TODO: dùng intersection, difference và union.
-    return {}
+    return {
+        "common": semester_one.intersection(semester_two),
+        "only_one": semester_one.difference(semester_two),
+        "only_two": semester_two.difference(semester_one),
+        "all": semester_one.union(semester_two),
+    }
 
 
 def loai_trung_giu_thu_tu(words: list[str]) -> list[str]:
-    """Loại từ trùng nhưng giữ thứ tự xuất hiện đầu tiên."""
-    # TODO: dùng một set seen và một list result.
-    return []
+    seen = set()
+    result = []
+    for word in words:
+        if word not in seen:
+            seen.add(word)
+            result.append(word)
+    return result
 
 
 def tu_chung(first: str, second: str) -> set[str]:
-    """Trả các từ lowercase xuất hiện trong cả hai câu."""
-    # TODO: biến mỗi câu thành set rồi lấy phần giao.
-    return set()
+    set_first = set(first.lower().split())
+    set_second = set(second.lower().split())
+    return set_first.intersection(set_second)
 
 
 def la_anagram(first: str, second: str) -> bool:
-    """Kiểm tra hai chuỗi có cùng ký tự và số lần xuất hiện."""
-    # TODO: normalize khoảng trắng và chữ hoa trước khi so sánh.
-    return False
+    clean_first = sorted(first.lower().replace(" ", ""))
+    clean_second = sorted(second.lower().replace(" ", ""))
+    return clean_first == clean_second
 
 
 if __name__ == "__main__":
